@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
@@ -16,8 +17,8 @@ public class GatewayFirstseekerApplication {
 	}
 	
 	@GetMapping
-	public String welcome(){
-		return "Welcome to Kaminis first gateway seeker page";
+	public String welcome(@RequestHeader("x-location") String location){
+		return "Welcome to Kaminis first gateway seeker page from "+location;
 	}
 
 }
